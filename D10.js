@@ -90,6 +90,8 @@ let result = whoIsBigger(20, 4);
 
 let splitMe = (string) => string.split(" ");
 
+//Siccome non era esplicito nelle istruzioni, mi è sfuggito il fatto che ogni prima lettera dovesse essere maiuscola.
+//il procedimento sarebbe stato simile, fino ad arrivare a let parolaFinale = primaLettera.toUpperCase + stringa.slice(1)
 let stringSplitted = splitMe("Il test teorico è andato malissimo");
 
 /* ESERCIZIO 4
