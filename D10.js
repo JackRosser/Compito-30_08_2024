@@ -401,36 +401,104 @@ let newestMovieVerify = newestMovie(movies);
   Scrivi una funzione chiamata countMovies che ritorna il numero di film contenuti nell'array "movies" fornito.
 */
 
+let countMovies = (array) => array.length;
+
+let countMoviesVerify = countMovies(movies);
+
 /* ESERCIZIO 14
   Scrivi una funzione chiamata "onlyTheYears" che crea un array con solamente gli anni di uscita dei film contenuti nell'array "movies" fornito.
 */
+
+let onlyTheYears = function (array) {
+  let anniUscita = array.map((obj) => obj.Year);
+  return anniUscita;
+};
+
+let onlyTheYearsVerify = onlyTheYears(movies);
 
 /* ESERCIZIO 15
   Scrivi una funzione chiamata "onlyInLastMillennium" che ritorna solamente i film prodotto nel millennio scorso contenuti nell'array "movies" fornito.
 */
 
+let onlyInLastMillennium = function (array) {
+  let newArray = [];
+  array.forEach((n) => {
+    if (n.Year < 2000) {
+      newArray.push(n);
+    }
+  });
+  return newArray;
+};
+
+let onlyInLastMillenniumVerify = onlyInLastMillennium(movies);
+
 /* ESERCIZIO 16
   Scrivi una funzione chiamata "sumAllTheYears" che ritorna la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array "movies" fornito.
 */
 
+let sumAllTheYears = function (array) {
+  let arrayYears = array.map((n) => n.Year);
+  let sum = arrayYears.reduce((counter, anno) => parseInt(counter) + parseInt(anno), 0);
+  return sum;
+};
+
+let sumAllTheYearsVerify = sumAllTheYears(movies);
+
 /* ESERCIZIO 17
   Scrivi una funzione chiamata "searchByTitle" che riceve una stringa come parametro e ritorna i film nell'array "movies" fornito che la contengono nel titolo.
 */
+
+let searchByTitle = function (array, string) {
+  let titleFilter = array.filter((n) => n.Title === string);
+  return titleFilter[0];
+};
+
+let searchByTitleVerify = searchByTitle(movies, "Avengers: Endgame");
 
 /* ESERCIZIO 18
   Scrivi una funzione chiamata "searchAndDivide" che riceve una stringa come parametro e ritorna un oggetto contenente due array: "match" e "unmatch".
   "match" deve includere tutti i film dell'array "movies" fornito che contengono la stringa fornita all'interno del proprio titolo, mentre "unmatch" deve includere tutti i rimanenti.
 */
 
+let searchAndDivide = function (array, string) {
+  let moviesMatch = [];
+  let moviesUnmatch = [];
+  for (i = 0; i < array.length; i++) {
+    if (array[i].Title === string) {
+      moviesMatch.push(array[i]);
+    } else {
+      moviesUnmatch.push(array[i]);
+    }
+  }
+
+  let obj = {
+    match: moviesMatch,
+    unmatch: moviesUnmatch
+  };
+
+  return obj;
+};
+let searchAndDivideVerify = searchAndDivide(movies, "Avengers: Endgame");
+
 /* ESERCIZIO 19
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "movies" fornito privo dell'elemento nella posizione ricevuta come parametro.
 */
+
+let removeIndex = (array, num) => {
+  let spliced = array.splice(num, 1);
+  return array;
+};
+
+let removeIndexVerify = removeIndex(movies, 0);
 
 // DOM (nota: gli elementi che selezionerai non si trovano realmente nella pagina)
 
 /* ESERCIZIO 20
   Scrivi una funzione per selezionare l'elemento dotato di id "container" all'interno della pagina.
 */
+
+let idSelector = (id) => document.getElementById(id);
+let idSelectorVerify = idSelector("h1__id");
 
 /* ESERCIZIO 21
   Scrivi una funzione per selezionare ogni tag <td> all'interno della pagina.
@@ -485,5 +553,3 @@ let newestMovieVerify = newestMovie(movies);
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
 */
-
-/* Questo array viene usato per gli esercizi. Non modificarlo. */
