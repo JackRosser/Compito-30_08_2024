@@ -592,6 +592,16 @@ sonoStanco();
 
 */
 
+let halfTree = function (num) {
+  for (let i = 1; i <= num; i++) {
+    let tree = "";
+    tree = "*".repeat(i);
+    console.log(tree);
+  }
+};
+
+halfTree(20);
+
 /* ESERCIZIO 28
   Crea una funzione chiamata "tree" che riceve un numero come parametro e costruisce un albero di "*" (asterischi) dell'altezza fornita.
 
@@ -626,4 +636,3 @@ function isItPrime(num) {
 }
 
 let isItPrimeVerify = isItPrime(81);
-console.log(isItPrimeVerify);
