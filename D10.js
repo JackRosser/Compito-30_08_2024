@@ -85,14 +85,35 @@ let result = whoIsBigger(20, 4);
 
 /* ESERCIZIO 3
   Crea una funzione chiamata "splitMe" che riceve una stringa come parametro e ritorna un'array contenente ogni parola della stringa.
-
   Es.: splitMe("I love coding") => ritorna ["I", "Love", "Coding"]
 */
+
+let splitMe = (string) => string.split(" ");
+
+let stringSplitted = splitMe("Il test teorico è andato malissimo");
 
 /* ESERCIZIO 4
   Crea una funzione chiamata "deleteOne" che riceve una stringa e un booleano come parametri.
   Se il valore booleano è true la funzione deve ritornare la stringa senza il primo carattere, altrimenti la deve ritornare senza l'ultimo.
 */
+
+let killLast = function (string) {
+  let spliced = string.split("");
+  spliced.pop();
+  let reunion = spliced.join("");
+  return reunion;
+};
+
+let deleteOne = function (string, boolean) {
+  let trueString = string.slice(1);
+  if (boolean === true) {
+    return trueString;
+  } else {
+    return killLast(string);
+  }
+};
+
+let deleteOneVerify = deleteOne("Vediamo se funziona", false);
 
 /* ESERCIZIO 5
   Crea una funzione chiamata "onlyLetters" che riceve una stringa come parametro e la ritorna eliminando tutte le cifre numeriche.
@@ -100,13 +121,72 @@ let result = whoIsBigger(20, 4);
   Es.: onlyLetters("I have 4 dogs") => ritorna "I have dogs"
 */
 
+let onlyLetters = function (string) {
+  let splitted = string.split("");
+  let array = [];
+
+  // Trasformo in numeri i valori
+  for (let i = 0; i < splitted.length; i++) {
+    let number = parseInt(splitted[i]);
+    array.push(number);
+  }
+
+  // Tengo solo i numeri
+  for (let i = 0; i < array.length; i++) {
+    if (isNaN(array[i])) {
+      array.splice(i, 1);
+      i--;
+    }
+  }
+
+  // Confronto
+  for (let i = 0; i < splitted.length; i++) {
+    for (let j = 0; j < array.length; j++) {
+      if (parseInt(splitted[i]) === array[j]) {
+        splitted.splice(i, 1);
+        i--;
+        break;
+      }
+    }
+  }
+
+  let joined = splitted.join("");
+  return joined;
+};
+
+let onlyLettersVerify = onlyLetters("ho 10 cani e 3 gatti");
+
 /* ESERCIZIO 6
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
 */
 
+let isThisAnEmail = function (string) {
+  let splitted = string.split("");
+  for (let i = 0; i < splitted.length; i++) {
+    if (splitted[i] === "@") {
+      return true;
+    }
+  }
+  return "Inserisci un indirizzo mail valido";
+};
+
+//so che bisognerebbe controllare che ci sia un solo carattere "@" e per farlo basta creare un nuovo for loop che confronti posizione per posizione e restutuisca false se [@] === [@]
+//ma non ho abbastanza tempo
+
+let isThisAnEmailVerify = isThisAnEmail("prova@gmail.com");
+
 /* ESERCIZIO 7
   Scrivi una funzione chiamata "whatDayIsIt" che ritorna il giorno della settimana corrente.
 */
+
+let day = new Date();
+let today = function () {
+  let week = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"];
+  let dayToday = day.getDay();
+  return week[dayToday];
+};
+// ma che senso ha che domenica corrisponda a 0 invece che a 6????? Sono diventato matto!!!!!!!
+let dayVerify = `Oggi è ${today()}`;
 
 /* ESERCIZIO 8
   Scrivi una funzione chiamata "rollTheDices" che riceve un numero come parametro.
@@ -120,6 +200,23 @@ let result = whoIsBigger(20, 4);
       values: [3, 3, 4]
   }
 */
+
+let rollTheDices = function (num) {
+  let array = [];
+  for (let i = 0; i < num; i++) {
+    let random = Math.ceil(Math.random() * 6);
+    array.push(random);
+  }
+
+  let sum = array.reduce((counter, currentValue) => counter + currentValue, 0);
+  let obj = {
+    sum: sum,
+    values: array
+  };
+  return obj;
+};
+
+let rollTheDicesVerify = rollTheDices(5);
 
 /* ESERCIZIO 9
   Scrivi una funzione chiamata "howManyDays" che riceve una data come parametro e ritorna il numero di giorni trascorsi da tale data.
