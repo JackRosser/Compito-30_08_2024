@@ -607,3 +607,23 @@ sonoStanco();
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
 */
+
+// un numero è considerato "primo" se può essere diviso solo per se stesso (tipo 10 non è un numero primo perché può essere divisibile per 2 o per 5, mentre 13 si)
+function isItPrime(num) {
+  if (num <= 1) {
+    return false; // I numeri minori o uguali a 1 non sono primi
+  }
+
+  // uso Math.sqrt per calcolare la radice quadrata del numero in quanto se num è divisibile per un numero maggiore della sua radice quadrata,
+  // allora deve essere divisibile per qualche numero minore della sua radice quadrata
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+let isItPrimeVerify = isItPrime(81);
+console.log(isItPrimeVerify);
