@@ -498,31 +498,85 @@ let removeIndexVerify = removeIndex(movies, 0);
 */
 
 let idSelector = (id) => document.getElementById(id);
-let idSelectorVerify = idSelector("h1__id");
+let idSelectorVerify = idSelector("container");
 
 /* ESERCIZIO 21
   Scrivi una funzione per selezionare ogni tag <td> all'interno della pagina.
 */
 
+let allTdSelector = () => document.querySelectorAll("td");
+let allTdSelectorVerify = allTdSelector();
+
 /* ESERCIZIO 22
   Scrivi una funzione che, tramite un ciclo, stampa in console il testo contenuto in ogni tag <td> all'interno della pagina.
 */
+
+let tdPrint = function () {
+  let td = allTdSelector();
+
+  for (let i = 0; i < td.length; i++) {
+    console.log(td[i].innerText);
+  }
+};
+
+// tdPrint(); <---- lo metto come commento per non averlo in mezzo ai piedi
+
+//____________________;
 
 /* ESERCIZIO 23
   Scrivi una funzione per aggiungere un background di colore rosso a ogni link all'interno della pagina.
 */
 
+let redLink = function () {
+  let links = document.querySelectorAll("a");
+  links.forEach((link) => {
+    link.style.backgroundColor = "red";
+  });
+};
+
+redLink();
+
 /* ESERCIZIO 24
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
 */
+
+let addElement = function () {
+  let myList = document.getElementById("myList");
+  let li = document.createElement("li");
+  li.innerText = "6";
+  myList.appendChild(li);
+};
+
+addElement();
 
 /* ESERCIZIO 25
   Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
 
+let wooosh = function () {
+  let myList = document.getElementById("myList");
+
+  while (myList.firstChild) {
+    myList.removeChild(myList.firstChild);
+  }
+
+  return myList;
+};
+
+wooosh();
+
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
 */
+
+let sonoStanco = function () {
+  let tr = document.querySelectorAll("tr");
+  tr.forEach((tr) => {
+    tr.classList.add("test");
+  });
+};
+
+sonoStanco();
 
 // [EXTRA] JS Avanzato
 
