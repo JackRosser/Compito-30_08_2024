@@ -600,7 +600,7 @@ let halfTree = function (num) {
   }
 };
 
-halfTree(20);
+// halfTree(3);
 
 /* ESERCIZIO 28
   Crea una funzione chiamata "tree" che riceve un numero come parametro e costruisce un albero di "*" (asterischi) dell'altezza fornita.
@@ -613,6 +613,16 @@ halfTree(20);
   *****
 
 */
+
+function tree(num) {
+  for (let i = 1; i <= num; i++) {
+    let spaces = " ".repeat(num - i);
+    let stars = "*".repeat(2 * i - 1);
+    let christmas = spaces + stars;
+    console.log(christmas);
+  }
+}
+tree(20);
 
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
@@ -636,3 +646,19 @@ function isItPrime(num) {
 }
 
 let isItPrimeVerify = isItPrime(81);
+
+/*
+
+
+
+   *
+  ***
+ *****
+*******
+
+
+
+
+
+
+*/
