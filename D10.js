@@ -622,7 +622,28 @@ function tree(num) {
     console.log(christmas);
   }
 }
-tree(20);
+// tree(20);
+
+/* ESERCIZIO EXTRA MESSO DA ME PERCHE' SONO SADICO, ADDOBBIAMO IL NOSTRO ALBERO */
+
+function treeAddobbed(num) {
+  for (let i = 1; i <= num; i++) {
+    let spaces = " ".repeat(num - i);
+    let stars = "";
+
+    for (let j = 1; j <= 2 * i - 1; j++) {
+      if (j % 3 === 0) {
+        stars += "O";
+      } else {
+        stars += "*";
+      }
+    }
+
+    console.log(spaces + stars);
+  }
+}
+
+treeAddobbed(30);
 
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
